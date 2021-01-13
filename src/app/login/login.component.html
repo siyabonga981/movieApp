@@ -1,0 +1,77 @@
+<div fxLayout="row" fxLayoutAlign="start strech" fxFill class="mainBackground">
+  <!-- Overlay -->
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxFlex="100"
+    fxFill
+    class="overlay"
+  >
+    <!-- Login Card -->
+    <mat-card class="centeredCard">
+      <mat-card-header>
+        <mat-card-title class="alignCenter">Login Form</mat-card-title>
+      </mat-card-header>
+
+      <form #loginForm="ngForm">
+        <!-- Email Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Email</mat-label>
+
+          <input
+            type="email"
+            matInput
+            [(ngModel)]="user.email"
+            name="email"
+            required
+            placeholder="Please enter your email address"
+          />
+
+          <mat-error *ngIf="submitted && loginForm.controls.email?.invalid && loginForm.controls.email?.touched">
+            <!-- Require -->
+            <span *ngIf="loginForm.controls.email.errors?.required"
+              >Email is required</span
+            >
+            <!-- Pattern -->
+            <span *ngIf="loginForm.controls.email.errors?.pattern"
+              >Please enter a valid email address</span
+            >
+          </mat-error>                                                                                                                               
+        </mat-form-field>
+
+        <!-- Password Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Password</mat-label>
+
+          <input
+            type="password"
+            matInput
+            [(ngModel)]="user.password"
+            name="password"
+            required
+            placeholder="Please enter your password"
+          />
+
+          <mat-error *ngIf="submitted && loginForm.controls.password?.invalid">
+            <!-- Required -->
+            <span *ngIf="loginForm.controls.password.errors?.required"
+              >Password is required</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+        
+        <!-- Button Container -->
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutAlign="start strech" fxFlex="45">
+            <button mat-raised-button color="warn" (click)="loginForm.reset()">Reset</button>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="start strech" fxFlex="45">
+            <button mat-raised-button color="primary" (click)="submit(loginForm)">Submit</button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

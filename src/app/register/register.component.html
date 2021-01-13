@@ -1,0 +1,160 @@
+<div fxLayout="row" fxLayoutAlign="start strech" fxFill class="mainBackground">
+  <!-- Overlay -->
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxFlex="100"
+    fxFill
+    class="overlay"
+  >
+    <!-- Login Card -->
+    <mat-card class="centeredCard">
+      <mat-card-header>
+        <mat-card-title class="alignCenter">Registration Form</mat-card-title>
+      </mat-card-header>
+
+      <form #registrationForm="ngForm">
+        <!-- FIrst Name Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>First Name</mat-label>
+
+          <input
+            type="text"
+            matInput
+            [(ngModel)]="user.firstName"
+            name="firstName"
+            required
+            placeholder="Please enter first name"
+          />
+
+          <mat-error *ngIf="registrationForm.controls.firstName?.invalid">
+            <!-- Require -->
+            <span *ngIf="registrationForm.controls.firstName.errors?.required"
+              >First Name is required</span
+            >
+            <!-- Pattern -->
+            <span *ngIf="registrationForm.controls.firstName.errors?.pattern"
+              >Please enter a name</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+        <!-- FIrst Name Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Last Name</mat-label>
+
+          <input
+            type="text"
+            matInput
+            [(ngModel)]="user.lastName"
+            name="lastName"
+            required
+            placeholder="Please enter last name"
+          />
+
+          <mat-error *ngIf="registrationForm.controls.lastName?.invalid">
+            <!-- Require -->
+            <span *ngIf="registrationForm.controls.lastName.errors?.required"
+              >Last Name is required</span
+            >
+            <!-- Pattern -->
+            <span *ngIf="registrationForm.controls.lastName.errors?.pattern"
+              >Please enter a valid last name</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Email</mat-label>
+
+          <input
+            type="email"
+            matInput
+            [(ngModel)]="user.email"
+            name="email"
+            required
+            placeholder="Please enter your email address"
+          />
+
+          <mat-error *ngIf="registrationForm.controls.email?.invalid">
+            <!-- Require -->
+            <span *ngIf="registrationForm.controls.email.errors?.required"
+              >Email is required</span
+            >
+            <!-- Pattern -->
+            <span *ngIf="registrationForm.controls.email.errors?.pattern"
+              >Please enter a valid email address</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password Input -->
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Password</mat-label>
+
+          <input
+            type="password"
+            matInput
+            [(ngModel)]="user.password"
+            name="password"
+            required
+            placeholder="Please enter your password"
+          />
+
+          <mat-error *ngIf="registrationForm.controls.password?.invalid">
+            <!-- Required -->
+            <span *ngIf="registrationForm.controls.password.errors?.required"
+              >Password is required</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+                        <!-- Password Confirm Input -->
+                        <mat-form-field class="fullWidth" appearance="outline">
+                            <mat-label>Password</mat-label>
+                  
+                            <input
+                              type="password"
+                              matInput
+                              [(ngModel)]="user.passwordConfirm"
+                              name="passwordConfirm"
+                              required
+                              placeholder="Please reenter password"
+                            />
+                  
+                            <mat-error *ngIf="registrationForm.controls.passwordConfirm?.invalid">
+                              <!-- Required -->
+                              <span *ngIf="registrationForm.controls.passwordConfirm.errors?.required"
+                                >Password is required</span
+                              >
+                            </mat-error>
+                          </mat-form-field>
+
+        <!-- Button Container -->
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutAlign="start strech" fxFlex="45">
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="registrationForm.reset()"
+            >
+              Reset
+            </button>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="start strech" fxFlex="45">
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="registrationForm.invalid"
+              (click)="register(registrationForm)"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
